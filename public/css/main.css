@@ -58,3 +58,57 @@
     bottom: 0;
     left: 37%;
 }
+
+/* Footer */
+footer {
+    background-color:#263c6b;
+    min-height:150px;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10em;
+    padding-top: 20px;
+}
+footer .footer_copyright {
+    margin-top: 5em;
+    min-height:40px;
+    background-color:rgba(0,0,0,.2);
+    color: rgba(255,255,255,.6);
+}
+footer .footer_title {
+    font-size:21px;
+    font-weight:700;
+    color:#d9d6d6;
+    margin-bottom:22px;
+}
+footer ul, footer li{
+    padding:0;
+    margin:0;
+}
+footer li{
+    list-style-type:none;
+}
+footer .footer_social .footer_social_icon {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    background-color: blue;
+    color: #fff;
+    text-align: center;
+    margin-right: 10px;
+    padding-top: 7px;
+    border-radius: 50%;
+}
+footer .footer_social li{
+    float:left;
+}
+footer .footer_social .linked-in{
+    background-color:#007bb6;
+}
+footer .footer_social .facebook{
+    background-color:#3b5998;
+}
+footer .footer_social .twitter{
+    background-color:#1da1f2;
+}
+footer .footer_social .google{
+    background-color:#f63e28;
+}

@@ -16,6 +16,8 @@
         {% include 'layout/navbar.html.twig' %}
         {% block cover %}{% endblock %}
         {% block body %}{% endblock %}
+        {# Footer #}
+        {{ include('layout/footer.html.twig') }}
 
         {# JQuery #}
         <script src="{{ asset('library/jquery.min.js') }}"></script>
