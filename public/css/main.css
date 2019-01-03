@@ -15,7 +15,46 @@
     color: #FFF;
 }
 
-/* Color */
+/* Color font */
 .custom_orange {
     color: #d2691e;
+}
+.custom_title {
+    color: #3b5998;
+}
+
+/* Cover */
+.cover_home {
+    position:relative;
+    z-index: -1;
+    top:0;
+    left:0;
+    background-size:cover;
+    background-position: center;
+    box-shadow:0 2px 2px rgba(0,0,0,.25);
+}
+.cover_home .cover_home__title, .cover_home .cover_home__subtitle {
+    position: relative;
+    top: 40%;
+    z-index: 1;
+    text-shadow: 1px 1px 1px black;
+}
+.cover_home .cover_home__title h1 {
+    font-weight: bold;
+    font-size: 48px;
+    color: #d2691e;
+}
+.cover_home .cover_home__subtitle p{
+    font-weight: normal;
+    font-size: 24px;
+    color: #d2691e;
+}
+.cover_home .cover_home__title:after {
+    content: '';
+    position: absolute;
+    border-bottom: 2px #d2691e solid;
+    width: 25%;
+    height: 10px;
+    bottom: 0;
+    left: 37%;
 }
