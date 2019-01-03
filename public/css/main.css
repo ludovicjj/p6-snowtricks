@@ -1,0 +1,21 @@
+/* Navbar */
+.bg_custom {
+    background: #263c6b;
+}
+.navbar-brand {
+    font-weight:700;
+}
+.btn-outline-orange {
+    border: 1px #d2691e solid;
+    color: #d2691e;
+}
+.btn-outline-orange:hover {
+    border: 1px #d2691e solid;
+    background: #d2691e;
+    color: #FFF;
+}
+
+/* Color */
+.custom_orange {
+    color: #d2691e;
+}
