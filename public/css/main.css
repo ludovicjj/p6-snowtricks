@@ -1,0 +1,114 @@
+/* Navbar */
+.bg_custom {
+    background: #263c6b;
+}
+.navbar-brand {
+    font-weight:700;
+}
+.btn-outline-orange {
+    border: 1px #d2691e solid;
+    color: #d2691e;
+}
+.btn-outline-orange:hover {
+    border: 1px #d2691e solid;
+    background: #d2691e;
+    color: #FFF;
+}
+
+/* Color font */
+.custom_orange {
+    color: #d2691e;
+}
+.custom_title {
+    color: #3b5998;
+}
+
+/* Cover */
+.cover_home {
+    position:relative;
+    z-index: -1;
+    top:0;
+    left:0;
+    background-size:cover;
+    background-position: center;
+    box-shadow:0 2px 2px rgba(0,0,0,.25);
+}
+.cover_home .cover_home__title, .cover_home .cover_home__subtitle {
+    position: relative;
+    top: 40%;
+    z-index: 1;
+    text-shadow: 1px 1px 1px black;
+}
+.cover_home .cover_home__title h1 {
+    font-weight: bold;
+    font-size: 48px;
+    color: #d2691e;
+}
+.cover_home .cover_home__subtitle p{
+    font-weight: normal;
+    font-size: 24px;
+    color: #d2691e;
+}
+.cover_home .cover_home__title:after {
+    content: '';
+    position: absolute;
+    border-bottom: 2px #d2691e solid;
+    width: 25%;
+    height: 10px;
+    bottom: 0;
+    left: 37%;
+}
+
+/* Footer */
+footer {
+    background-color:#263c6b;
+    min-height:150px;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10em;
+    padding-top: 20px;
+}
+footer .footer_copyright {
+    margin-top: 5em;
+    min-height:40px;
+    background-color:rgba(0,0,0,.2);
+    color: rgba(255,255,255,.6);
+}
+footer .footer_title {
+    font-size:21px;
+    font-weight:700;
+    color:#d9d6d6;
+    margin-bottom:22px;
+}
+footer ul, footer li{
+    padding:0;
+    margin:0;
+}
+footer li{
+    list-style-type:none;
+}
+footer .footer_social .footer_social_icon {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    background-color: blue;
+    color: #fff;
+    text-align: center;
+    margin-right: 10px;
+    padding-top: 7px;
+    border-radius: 50%;
+}
+footer .footer_social li{
+    float:left;
+}
+footer .footer_social .linked-in{
+    background-color:#007bb6;
+}
+footer .footer_social .facebook{
+    background-color:#3b5998;
+}
+footer .footer_social .twitter{
+    background-color:#1da1f2;
+}
+footer .footer_social .google{
+    background-color:#f63e28;
+}
