@@ -1,3 +1,5 @@
+{% import 'macro/macro.html.twig' as macro %}
+
 {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class':'trick'}}) }}
 <div class="row">
     <div class="col-12 col-sm-12 offset-md-2 col-md-8">
@@ -17,6 +19,28 @@
             {{ form_row(form.category) }}
         </div>
 
+    </div>
+</div>
+
+{# videos #}
+<div class="row">
+    <div class="col-12 col-sm-12 offset-md-2 col-md-8">
+
+        <div class="col-12 wrapper-video"
+             id="wrapper-video"
+             data-prototype="{{ macro.customVideoRow(form.videos.vars.prototype)|e('html_attr') }}"
+             data-index="{{ form.videos|length }}"
+        >
+            <div class="mb-2">
+                <a href="#" class="video-add">
+                    <span class="fa fa-plus-circle"></span>
+                    Ajouter une video
+                </a>
+            </div>
+            {% for video in form.videos %}
+                {{ macro.customVideoRow(video) }}
+            {% endfor %}
+        </div><!--/.wrapper-video-->
     </div>
 </div>
 
