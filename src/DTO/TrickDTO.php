@@ -22,9 +22,9 @@ class TrickDTO
     public $category;
 
     public function __construct(
-        Category $category,
         string $title = null,
-        string $description = null
+        string $description = null,
+        Category $category = null
     )
     {
         $this->title = $title;
