@@ -1,0 +1,32 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class':'trick'}}) }}
+<div class="row">
+    <div class="col-12 col-sm-12 offset-md-2 col-md-8">
+
+        {# Title #}
+        <div class="col-12 form-group">
+            {{ form_row(form.title) }}
+        </div>
+
+        {# Description #}
+        <div class="col-12 form-group">
+            {{ form_row(form.description) }}
+        </div>
+
+        {# Category #}
+        <div class="col-12 form-group">
+            {{ form_row(form.category) }}
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-12 offset-md-2 col-md-8">
+        <div class="col-12">
+            <button type="submit" class="btn btn_custom mt-2">
+                Rajouter
+            </button>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
