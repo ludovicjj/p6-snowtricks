@@ -11,11 +11,33 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class AddTrickHandler
 {
+    /**
+     * @var AddTrickBuilder
+     */
     private $addTrickBuilder;
+
+    /**
+     * @var ValidatorInterface
+     */
     private $validatorInterface;
+
+    /**
+     * @var TrickRepository
+     */
     private $trickRepository;
+
+    /**
+     * @var SessionInterface
+     */
     private $sessionInterface;
 
+    /**
+     * AddTrickHandler constructor.
+     * @param AddTrickBuilder $addTrickBuilder
+     * @param ValidatorInterface $validatorInterface
+     * @param TrickRepository $trickRepository
+     * @param SessionInterface $sessionInterface
+     */
     public function __construct(
         AddTrickBuilder $addTrickBuilder,
         ValidatorInterface $validatorInterface,
