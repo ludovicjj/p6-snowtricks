@@ -16,6 +16,9 @@ class AddTrickController
      */
     private $twig;
 
+    /**
+     * @var FormFactoryInterface
+     */
     private $formFactory;
 
 

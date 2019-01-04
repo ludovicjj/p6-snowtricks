@@ -1,0 +1,17 @@
+App\DTO\TrickDTO:
+    properties:
+        title:
+            - NotBlank:
+                message: Le champs titre est obligatoire.
+
+            - Length:
+                max: 50
+                maxMessage: Maximun {{ limit }} caractères.
+
+        description:
+            - NotBlank:
+                message: Le champs description est obligatoire.
+
+        category:
+            - NotBlank:
+                message: Veuillez choissir une catégorie.
