@@ -4,6 +4,7 @@ namespace App\Form\Type;
 
 use App\Entity\Category;
 use App\DTO\TrickDTO;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -38,6 +39,17 @@ class AddTrickType extends AbstractType
                 'expanded' => false,
                 'required' => false,
             ])
+            ->add('videos', CollectionType::class, [
+                'entry_type' => VideoType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'prototype' => true,
+                'label' => false,
+                'entry_options' => [
+                    'required' => false,
+                ]
+            ])
             ;
     }
 
@@ -49,7 +61,8 @@ class AddTrickType extends AbstractType
                 return new TrickDTO(
                     $form->get('title')->getData(),
                     $form->get('description')->getData(),
-                    $form->get('category')->getData()
+                    $form->get('category')->getData(),
+                    $form->get('videos')->getData()
                 );
             }
         ]);
