@@ -2,6 +2,8 @@
 
 namespace App\Form\Handler;
 
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Repository\TrickRepository;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormInterface;
 use App\Builder\Trick\AddTrickBuilder;
@@ -11,14 +13,20 @@ class AddTrickHandler
 {
     private $addTrickBuilder;
     private $validatorInterface;
+    private $trickRepository;
+    private $sessionInterface;
 
     public function __construct(
         AddTrickBuilder $addTrickBuilder,
-        ValidatorInterface $validatorInterface
+        ValidatorInterface $validatorInterface,
+        TrickRepository $trickRepository,
+        SessionInterface $sessionInterface
     )
     {
         $this->addTrickBuilder = $addTrickBuilder;
         $this->validatorInterface = $validatorInterface;
+        $this->trickRepository = $trickRepository;
+        $this->sessionInterface = $sessionInterface;
     }
 
     /**
@@ -43,7 +51,8 @@ class AddTrickHandler
                 return false;
             }
 
-
+            $this->trickRepository->persists($trick);
+            $this->sessionInterface->getFlashBag()->add('add-trick-success', 'La figure a été rajouté avec succès');
 
             return true;
         }
