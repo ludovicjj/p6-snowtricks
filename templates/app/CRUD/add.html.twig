@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block body %}
     <div class="container mt-4">
         <div class="row">
@@ -9,5 +9,8 @@
                 </div>
             </div>
         </div>
+
+        {{ include('layout/form_trick.html.twig') }}
+
     </div>
 {% endblock %}
