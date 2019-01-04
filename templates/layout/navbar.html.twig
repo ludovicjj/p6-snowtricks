@@ -8,7 +8,7 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {% if app.request.attributes.get('_route') == 'add_trick' %}active{% endif %}" href="{{ path('add_trick') }}">
                     Ajouter
                 </a>
             </li>
