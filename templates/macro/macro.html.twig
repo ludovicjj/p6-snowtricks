@@ -1,0 +1,19 @@
+{% macro customVideoRow(video) %}
+    <div class="row">
+        <div class="col-12 video-container">
+            {{ form_label(video, 'Video ' ~ (video.vars.name)) }}
+            <div class="row form-group">
+                <div class="col-12">
+                    <div class="input-group">
+                        {{ form_widget(video.url) }}
+                        <div class="input-group-prepend">
+                            <a href="#" class="remove-video btn btn_custom rounded-right">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container -->
+    </div>
+{% endmacro %}
