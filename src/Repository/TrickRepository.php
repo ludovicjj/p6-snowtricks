@@ -12,4 +12,23 @@ class TrickRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Trick::class);
     }
+
+    /**
+     * @param Trick $trick
+     * @throws \Doctrine\ORM\ORMException
+     */
+    public function persists(Trick $trick)
+    {
+        $this->_em->persist($trick);
+        $this->save();
+    }
+
+    /**
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save()
+    {
+        $this->_em->flush();
+    }
 }
