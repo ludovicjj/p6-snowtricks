@@ -13,5 +13,12 @@
 
         <many-to-one field="category" target-entity="App\Entity\Category" />
 
+        <one-to-many field="videos" target-entity="App\Entity\Video" mapped-by="trick">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
+
     </entity>
 </doctrine-mapping>
