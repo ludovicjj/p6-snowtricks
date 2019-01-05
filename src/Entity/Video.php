@@ -51,6 +51,30 @@ class Video
         $this->url = $url;
     }
 
+    private function urlBuilder()
+    {
+        $control = $this->getType();  // on récupère le type de la vidéo
+        $idVideo = strip_tags($this->getIdVideo()); // on récupère son identifiant
+
+        if($control == 'youtube')
+        {
+            $embed = "https://www.youtube-nocookie.com/embed/".$idVideo;
+            return $embed;
+        }
+        else if ($control == 'dailymotion')
+        {
+            $embed = "https://www.dailymotion.com/embed/video/".$idVideo;
+            return $embed;
+        }
+        return null;
+    }
+
+    public function getIframe()
+    {
+        $iframe = "<iframe width='100%' height='100%' src='".$this->urlBuilder()."'  frameborder='0'  allowfullscreen></iframe>";
+        return $iframe;
+    }
+
     public function getId(): UuidInterface
     {
         return $this->id;
