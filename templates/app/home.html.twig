@@ -26,6 +26,13 @@
             </div>
         {% endfor %}
 
+        {# Message Flash de succes delete-trick #}
+        {% for message in app.session.flashBag.get('delete-trick-success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <div class="row" id="js_container_trick">
             {% for trick in tricks %}
                 {{ include('layout/card.html.twig', {'trick': trick}) }}
