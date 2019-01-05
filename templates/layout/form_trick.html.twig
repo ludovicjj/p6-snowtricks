@@ -44,6 +44,29 @@
     </div>
 </div>
 
+{# Images #}
+<div class="row">
+    <div class="col-12 col-sm-12 offset-md-2 col-md-8">
+
+        <div class="form-row col-12 wrapper-image"
+             data-prototype="{{ macro.customImageRow(form.images.vars.prototype)|e('html_attr') }}"
+             data-index="{{ form.images|length }}"
+        >
+
+            <div class="col-12 mb-2">
+                <a href="#" class="image-add">
+                    <span class="fa fa-plus-circle"></span>
+                    Ajouter une image
+                </a>
+            </div>
+
+            {% for image in form.images %}
+                {{ macro.customImageRow(image) }}
+            {% endfor %}
+        </div><!--/.wrapper-image-->
+    </div>
+</div>
+
 <div class="row">
     <div class="col-12 col-sm-12 offset-md-2 col-md-8">
         <div class="col-12">
