@@ -136,3 +136,14 @@ footer .footer_social .google{
     background: #263c6b;
     border: 1px #263c6b solid;
 }
+
+/* Pagination */
+#container_navigation li.active .page-link {
+    background-color: #d2691e;
+    border: 1px #d2691e solid;
+}
+#container_navigation li.active .page-link:hover {
+    color: #FFF;
+    background-color: #a04b0f;
+    border: 1px #a04b0f solid;
+}
