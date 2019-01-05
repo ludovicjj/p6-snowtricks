@@ -1,0 +1,29 @@
+/* Image */
+.image-container .form-control {
+    padding-bottom: 0.5rem;
+    height: auto;
+}
+.image-container .remove-image {
+    cursor: pointer;
+    color: #3b5998;
+}
+.image-container .label-file img {
+    width: 100%;
+    height: auto;
+}
+.image-container .custom-file {
+    display: none;
+}
+.image-container .error_form-group {
+    border: 1px red solid;
+}
+
+/* Link add-video and add-image */
+.video-add, .video-add:hover, .image-add, .image-add:hover {
+    color: #d2691e;
+}
+
+/* Display badge error */
+.form-error-icon {
+    display: none;
+}
