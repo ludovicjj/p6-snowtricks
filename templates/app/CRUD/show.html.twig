@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron text-center custom_jumbotron">
+        <h1 class="custom_orange">{{ trick.title }}</h1>
+        <h3 class="text-center">
+            <span class="badge badge-custom">{{ trick.category.name }}</span>
+        </h3>
+    </div>
+
+    <div class="container">
+        {# Back Home #}
+        <div class="row">
+            <div class="col-12">
+                <div class="back_home_container">
+                    <a href="{{ path('home') }}" class="btn btn_custom">
+                        <i class="fas fa-angle-double-left"></i>Retour à la liste des figures
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {# Description #}
+        <div class="row">
+            <div class="col-12">
+                <h4 class="custom_title">Description :</h4>
+                <p>{{ trick.description }}</p>
+            </div>
+        </div>
+
+        {# Image #}
+        <div class="row">
+            <div class="col-12">
+                <h4 class="custom_title">Image{% if trick.images|length > 1 %}s{% endif %} :</h4>
+                {% if trick.images|length == 0 %}<p>Il n'y a pas de d'image pour cette figure</p>{% endif %}
+            </div>
+
+            {# Carousel_image #}
+            <div id="carousel_image">
+                {% for image in trick.images %}
+                    <div class="item">
+                        <div class="item__image">
+                            <a href="#" data-toggle="modal" data-target="#modal__image--{{ image.id }}">
+                                <img src="{{ asset(image.path) }}" alt="{{ image.alt }}" class="img-thumbnail">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {# Large modal #}
+        {% for image in trick.images %}
+            <div class="modal fade bd-example-modal-lg" id="modal__image--{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myLargeModalLabel">{{ image.alt }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{ asset(image.path) }}" alt="{{ image.alt }}" class="rounded img-fluid" style="min-width:100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {# Video #}
+        <div class="row">
+            <div class="col-12">
+                <h4 class="custom_title">Vidéo{% if trick.videos|length > 1 %}s{% endif %} :</h4>
+                {% if trick.videos|length == 0 %}<p>Il n'y a pas de vidéo pour cette figure</p>{% endif %}
+            </div>
+            {# Carousel_video #}
+            <div id="carousel_video">
+                {% for video in trick.videos %}
+                    <div class="item">
+                        <div class="item__image embed-responsive embed-responsive-16by9 item__video">
+                            {{ video.Iframe()|raw }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/carousel.js') }}"></script>
+{% endblock %}

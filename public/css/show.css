@@ -1,0 +1,97 @@
+/* Button back home */
+.btn_custom {
+    margin-bottom: 25px;
+}
+.btn_custom i {
+    opacity: 0;
+    margin-right: -15px;
+
+    -webkit-transition: margin-right 0.3s, opacity 0.3s;
+    -moz-transition: margin-right 0.3s, opacity 0.3s;
+    -o-transition: margin-right 0.3s, opacity 0.3s;
+    transition: margin-right 0.3s, opacity 0.3s;
+}
+.btn_custom:hover i {
+    opacity: 1;
+    margin-right: 5px;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+}
+.carousel__container {
+    overflow: hidden;
+}
+.carousel__panorama {
+    transition: transform 0.3s;
+    transform: translate3d(0, 0, 0);
+}
+.carousel__panorama::after {
+    content: '';
+    clear: both;
+    display:table;
+}
+.carousel__item {
+    float: left;
+}
+.item {
+    margin: 20px 10px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px #3232321a,0 5px 15px #0000001a;
+}
+.item__image img {
+    width: 100%;
+}
+.item__video {
+    border: 4px #FFFFFF solid;
+}
+.carousel__next, .carousel__prev {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff url(right.svg) center center no-repeat;
+    background-size: 20px 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    top: 50%;
+    margin-top: -20px;
+    right: -10px;
+    box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
+    cursor: pointer;
+
+    -webkit-transition: transform 0.3s, opacity 0.3s;
+    -moz-transition: transform 0.3s, opacity 0.3s;
+    /*-ms-transition: transform 0.3s, opacity 0.3s;*/
+    -o-transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.carousel__next:hover, .carousel__prev:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+.carousel__prev {
+    right: auto;
+    left: -10px;
+    background-image: url(left.svg);
+}
+.carousel__prev--hidden, .carousel__next--hidden {
+    opacity: 0;
+    display: none;
+}
+#carousel_video {
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .carousel__prev {
+        left: 10px;
+    }
+    .carousel__next {
+        right: 10px;
+    }
+}

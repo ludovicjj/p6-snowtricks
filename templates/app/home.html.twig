@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/card.css') }}">
+{% endblock %}
+
 {% block cover %}
     <div class="cover_home text-center" style="background-image: url('{{ asset('image/cover.jpg') }}')">
         <div class="cover_home__title">
@@ -22,9 +26,20 @@
             </div>
         {% endfor %}
 
+        <div class="row" id="js_container_trick">
+            {% for trick in tricks %}
+                {{ include('layout/card.html.twig', {'trick': trick}) }}
+            {% endfor %}
+        </div>
+
+        <div class=row">
+            <div id="container_navigation" class="mt-4"></div>
+        </div>
+
     </div>
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/cover.js') }}"></script>
+    <script src="{{ asset('js/pagination.js') }}"></script>
 {% endblock %}
