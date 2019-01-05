@@ -26,16 +26,23 @@ class TrickDTO
      */
     public $videos;
 
+    /**
+     * @var array
+     */
+    public $images;
+
     public function __construct(
         string $title = null,
         string $description = null,
         Category $category = null,
-        array $videos = null
+        array $videos = null,
+        array $images = null
     )
     {
         $this->title = $title;
         $this->description = $description;
         $this->category = $category;
         $this->videos = $videos;
+        $this->images = $images;
     }
 }
