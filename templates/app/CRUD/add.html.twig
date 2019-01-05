@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/form_trick.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 col-sm-12 offset-md-2 col-md-8">
+                <div class="col-12 custom_title">
+                    <h4>Ajouter une figure</h4>
+                </div>
+            </div>
+        </div>
+
+        {{ include('layout/form_trick.html.twig') }}
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/form_trick.js') }}"></script>
+{% endblock %}

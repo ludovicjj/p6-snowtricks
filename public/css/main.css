@@ -23,6 +23,13 @@
     color: #3b5998;
 }
 
+/* Title */
+.custom_title h4 {
+    border-bottom: 1px solid #3b5998;
+    padding-bottom: 25px;
+    margin: 20px 0 30px;
+}
+
 /* Cover */
 .cover_home {
     position:relative;
@@ -53,10 +60,10 @@
     content: '';
     position: absolute;
     border-bottom: 2px #d2691e solid;
-    width: 25%;
+    width: 20%;
     height: 10px;
     bottom: 0;
-    left: 37%;
+    left: 40%;
 }
 
 /* Footer */
@@ -111,4 +118,21 @@ footer .footer_social .twitter{
 }
 footer .footer_social .google{
     background-color:#f63e28;
+}
+
+/* Button */
+.btn_custom {
+    background: #3b5998;
+    border: 1px #3b5998 solid;
+    box-shadow:0 2px 2px rgba(0,0,0,.25);
+    color: #FFF;
+}
+.btn_custom:hover {
+    background: #263c6b;
+    border: 1px #263c6b solid;
+    color: #FFF;
+}
+.btn_custom:active {
+    background: #263c6b;
+    border: 1px #263c6b solid;
 }

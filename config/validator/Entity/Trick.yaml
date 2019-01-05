@@ -1,0 +1,5 @@
+App\Entity\Trick:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: title
+            message: Il éxiste déjà une figure portant ce nom.
