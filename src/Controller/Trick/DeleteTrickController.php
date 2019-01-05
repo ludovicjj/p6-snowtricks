@@ -9,7 +9,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-
 class DeleteTrickController
 {
     /**
@@ -17,6 +16,9 @@ class DeleteTrickController
      */
     private $urlGenerator;
 
+    /**
+     * @var TrickRepository
+     */
     private $trickRepository;
 
     public function __construct(
@@ -36,6 +38,8 @@ class DeleteTrickController
     public function delete(Request $request): RedirectResponse
     {
         $trick = $this->trickRepository->findBy(['slug' => $request->attributes->get('slug')]);
+
+        $submittedToken = $request->request->get('token');
 
         if (!$trick) {
             throw new NotFoundHttpException('Aucune figure ne correspond aux données reçues');
