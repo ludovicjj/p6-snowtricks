@@ -52,7 +52,7 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                             <form action="{{ path('delete_trick', {'slug': trick.slug}) }}" method="post">
                                 <button type="submit" class="btn btn-danger">Supprimer</button>
-
+                                <input type="hidden" name="token" value="{{ csrf_token('delete' ~ trick.id) }}" />
                             </form>
                         </div>
                     </div>
