@@ -4,13 +4,13 @@
         {# Card Body #}
         <div class="card-body custom_card_body_parent">
         {% if trick.images|length == 0 %}
-            <a href="#">
+            <a href="{{ path('show_trick', {'slug': trick.slug}) }}">
                 <div class="custom_card_body_child" style="background-image: url('{{ asset('image/main-picture.png') }}');"></div>
             </a>
         {% else %}
             {% for image in trick.images %}
                 {% if loop.first %}
-                    <a href="#">
+                    <a href="{{ path('show_trick', {'slug': trick.slug}) }}">
                         <div class="custom_card_body_child" style="background-image: url('{{ asset(image.path) }}');"></div>
                     </a>
                 {% endif %}
@@ -21,7 +21,7 @@
         {# Card Footer #}
         <div class="card-footer text-center custom_card_footer">
             <h5 class="card-title">
-                <a href="#" class="custom_orange custom_card_title">{{ trick.title }}</a>
+                <a href="{{ path('show_trick', {'slug': trick.slug}) }}" class="custom_orange custom_card_title">{{ trick.title }}</a>
             </h5>
         </div>
 
