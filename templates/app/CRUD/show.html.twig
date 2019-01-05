@@ -1,5 +1,59 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+{% endblock %}
+
 {% block body %}
-    hello
+    <div class="jumbotron text-center custom_jumbotron">
+        <h1 class="custom_orange">{{ trick.title }}</h1>
+        <h3 class="text-center">
+            <span class="badge badge-custom">{{ trick.category.name }}</span>
+        </h3>
+    </div>
+
+    <div class="container" style="border:1px black solid;">
+        {# Back Home #}
+        <div class="row">
+            <div class="col-12">
+                <div class="back_home_container">
+                    <a href="{{ path('home') }}" class="btn btn_custom">
+                        <i class="fas fa-angle-double-left"></i>Retour à la liste des figures
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {# Description #}
+        <div class="row">
+            <div class="col-12">
+                <h4 class="custom_title">Description :</h4>
+                <p>{{ trick.description }}</p>
+            </div>
+        </div>
+
+        {# Image #}
+        <div class="row" style="border:1px red solid;">
+            <div class="col-12">
+                <h4 class="custom_title">Image{% if trick.images|length > 1 %}s{% endif %} :</h4>
+                {% if trick.images|length == 0 %}<p>Il n'y a pas de d'image pour cette figure</p>{% endif %}
+            </div>
+
+            {# Carousel_image #}
+            <div id="carousel_image" style="border:1px green solid;">
+                {% for image in trick.images %}
+                    <div class="item">
+                        <div class="item__image">
+                            <img src="{{ asset(image.path) }}" alt="{{ image.alt }}" class="img-thumbnail">
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/carousel.js') }}"></script>
 {% endblock %}
