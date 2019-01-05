@@ -1,0 +1,33 @@
+/* Card */
+.custom_card_title:hover {
+    text-decoration: none;
+    color: #d2691e;
+}
+.custom_card_body_parent {
+    padding: 0;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+.custom_card_body_child {
+    height: 100%;
+    width: 100%;
+    background-size:cover;
+    background-position: center;
+
+    -webkit-transition: transform 0.3s;
+    -moz-transition: transform 0.3s;
+    /*-ms-transition: transform 0.3s;*/
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s;
+}
+.custom_card_body_parent:hover .custom_card_body_child {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.custom_card_footer {
+    background: #FFF;
+}
