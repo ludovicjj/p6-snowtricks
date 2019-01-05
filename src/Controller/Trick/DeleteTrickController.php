@@ -48,11 +48,14 @@ class DeleteTrickController
      * @Route("/figure/supprimer/{slug}", name="delete_trick")
      * @param Request $request
      * @return RedirectResponse
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function delete(Request $request): RedirectResponse
     {
         /* @var \App\Entity\Trick $trick */
-        $trick = $this->trickRepository->findBy(['slug' => $request->attributes->get('slug')]);
+        $trick = $this->trickRepository->findOneBy(['slug' => $request->attributes->get('slug')]);
 
         $submittedToken = $request->request->get('token');
 
