@@ -20,5 +20,12 @@
             </cascade>
         </one-to-many>
 
+        <one-to-many field="images" target-entity="App\Entity\Image" mapped-by="trick">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
+
     </entity>
 </doctrine-mapping>
