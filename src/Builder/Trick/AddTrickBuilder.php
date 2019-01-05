@@ -5,6 +5,7 @@ namespace App\Builder\Trick;
 use App\Entity\Trick;
 use App\DTO\TrickDTO;
 use App\Builder\Video\VideoBuilder;
+use App\Builder\Image\ImageBuilder;
 
 class AddTrickBuilder
 {
@@ -13,11 +14,18 @@ class AddTrickBuilder
      */
     private $videoBuilder;
 
+    /**
+     * @var ImageBuilder
+     */
+    private $imageBuilder;
+
     public function __construct(
-        VideoBuilder $videoBuilder
+        VideoBuilder $videoBuilder,
+        ImageBuilder $imageBuilder
     )
     {
         $this->videoBuilder = $videoBuilder;
+        $this->imageBuilder = $imageBuilder;
     }
 
     /**
@@ -32,7 +40,8 @@ class AddTrickBuilder
             $trickDTO->description,
             $trickDTO->title,
             $trickDTO->category,
-            $this->videoBuilder->create($trickDTO->videos)
+            $this->videoBuilder->create($trickDTO->videos),
+            $this->imageBuilder->create($trickDTO->images)
         );
     }
 }
