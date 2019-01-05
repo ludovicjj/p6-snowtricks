@@ -43,6 +43,9 @@
 .item__image img {
     width: 100%;
 }
+.item__video {
+    border: 4px #FFFFFF solid;
+}
 .carousel__next, .carousel__prev {
     position: absolute;
     width: 40px;
@@ -54,7 +57,7 @@
     border-radius: 50%;
     top: 50%;
     margin-top: -20px;
-    right: -20px;
+    right: -10px;
     box-shadow: 0 15px 35px #3232321a,0 5px 15px #0000001a;
     cursor: pointer;
 
@@ -73,10 +76,22 @@
 }
 .carousel__prev {
     right: auto;
-    left: -20px;
+    left: -10px;
     background-image: url(left.svg);
 }
 .carousel__prev--hidden, .carousel__next--hidden {
     opacity: 0;
     display: none;
+}
+#carousel_video {
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .carousel__prev {
+        left: 10px;
+    }
+    .carousel__next {
+        right: 10px;
+    }
 }

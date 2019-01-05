@@ -155,4 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
         slidesVisible: 3,
         loop: false
     });
+
+    new Carousel(document.querySelector('#carousel_video'), {
+        slidesToScroll : 1,
+        slidesVisible: 1,
+        loop: false
+    });
 });
