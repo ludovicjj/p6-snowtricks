@@ -47,7 +47,6 @@ class UpdateVideoBuilder
      */
     public function compare(array $arrayVideoDTO, array $arrayVideoEntity)
     {
-        dump($this->oldUrl);
         foreach ($arrayVideoDTO as $key => $videoDTO ) {
 
             if (array_key_exists($key, $arrayVideoEntity)) {
