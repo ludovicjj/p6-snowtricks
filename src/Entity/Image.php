@@ -75,9 +75,4 @@ class Image
     {
         $this->trick = $trick;
     }
-
-    public function getTrick(): Trick
-    {
-        return $this->trick;
-    }
 }
