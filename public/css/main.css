@@ -147,3 +147,8 @@ footer .footer_social .google{
     background-color: #a04b0f;
     border: 1px #a04b0f solid;
 }
+
+/* Display badge error */
+.form-error-icon {
+    display: none;
+}
