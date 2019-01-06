@@ -3,25 +3,55 @@
 namespace App\Controller\User;
 
 
+use App\Form\Handler\RegistrationUserHandler;
 use App\Form\Type\RegistrationType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 class RegistrationUserController
 {
+    /**
+     * @var Environment
+     */
     private $twig;
+
+    /**
+     * @var FormFactoryInterface
+     */
     private $formFactory;
 
+    /**
+     * @var RegistrationUserHandler
+     */
+    private $registrationUserHandler;
+
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
+    /**
+     * RegistrationUserController constructor.
+     * @param Environment $twig
+     * @param FormFactoryInterface $formFactory
+     * @param RegistrationUserHandler $registrationUserHandler
+     * @param UrlGeneratorInterface $urlGenerator
+     */
     public function __construct(
         Environment $twig,
-        FormFactoryInterface $formFactory
+        FormFactoryInterface $formFactory,
+        RegistrationUserHandler $registrationUserHandler,
+        UrlGeneratorInterface $urlGenerator
     )
     {
         $this->twig = $twig;
         $this->formFactory = $formFactory;
+        $this->registrationUserHandler = $registrationUserHandler;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -32,10 +62,15 @@ class RegistrationUserController
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     * @throws \Exception
      */
     public function registration(Request $request)
     {
         $form = $this->formFactory->create(RegistrationType::class)->handleRequest($request);
+
+        if ($this->registrationUserHandler->handle($form)) {
+            $this->urlGenerator->generate('home');
+        }
 
         return new Response(
             $this->twig->render('app/User/registration.html.twig', [
