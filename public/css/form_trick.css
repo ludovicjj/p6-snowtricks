@@ -17,6 +17,9 @@
 .image-container .error_form-group {
     border: 1px red solid;
 }
+.image-container .label-file {
+    cursor: pointer;
+}
 
 /* Link add-video and add-image */
 .video-add, .video-add:hover, .image-add, .image-add:hover {
