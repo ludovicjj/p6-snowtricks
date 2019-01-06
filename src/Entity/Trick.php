@@ -92,6 +92,11 @@ class Trick
         }
     }
 
+    public function removeImage(Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
     public function getId(): UuidInterface
     {
         return $this->id;
