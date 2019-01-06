@@ -6,6 +6,7 @@ namespace App\Controller\User;
 use App\Form\Handler\RegistrationUserHandler;
 use App\Form\Type\RegistrationType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -69,7 +70,9 @@ class RegistrationUserController
         $form = $this->formFactory->create(RegistrationType::class)->handleRequest($request);
 
         if ($this->registrationUserHandler->handle($form)) {
-            $this->urlGenerator->generate('home');
+            return new RedirectResponse(
+                $this->urlGenerator->generate('home')
+            );
         }
 
         return new Response(
