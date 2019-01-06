@@ -27,9 +27,24 @@ class RegistrationUserHandler
      */
     private $userRepository;
 
+    /**
+     * @var Mailer
+     */
     private $mailer;
+
+    /**
+     * @var SessionInterface
+     */
     private $sessionInterface;
 
+    /**
+     * RegistrationUserHandler constructor.
+     * @param RegistrationUserBuilder $registrationUserBuilder
+     * @param ValidatorInterface $validatorInterface
+     * @param UserRepository $userRepository
+     * @param Mailer $mailer
+     * @param SessionInterface $sessionInterface
+     */
     public function __construct(
         RegistrationUserBuilder $registrationUserBuilder,
         ValidatorInterface $validatorInterface,
