@@ -27,3 +27,8 @@
 .form-error-icon {
     display: none;
 }
+
+/* Response ajax */
+.image-delete-message {
+    display: none;
+}
