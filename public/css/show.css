@@ -38,13 +38,21 @@
 .item {
     margin: 20px 10px;
     background-color: #fff;
-    box-shadow: 0 5px 15px #3232321a,0 5px 15px #0000001a;
+    box-shadow: 5px 5px 5px #3232321a;
 }
+
+#carousel_video .item {
+    box-shadow: -5px -5px 10px #3232321a,5px 5px 5px #0000001a;
+}
+
 .item__image img {
     width: 100%;
 }
 .item__video {
-    border: 4px #FFFFFF solid;
+    border: 1px lightgray solid;
+}
+.item__video iframe {
+    padding: 4px;
 }
 .carousel__next, .carousel__prev {
     position: absolute;

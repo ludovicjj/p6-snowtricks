@@ -92,6 +92,49 @@ class Trick
         }
     }
 
+    /**
+     * @param string $title
+     * @param string $description
+     * @param string $slug
+     * @param Category $category
+     * @param array|null $videos
+     * @param array|null $images
+     * @throws \Exception
+     */
+    public function update(
+        string $title,
+        string $description,
+        string $slug,
+        Category $category,
+        array $videos = null,
+        array $images = null
+    )
+    {
+        $this->title = $title;
+        $this->description = $description;
+        $this->slug = Slugger::makeSlug($slug);
+        $this->updatedAt = new \DateTime();
+        $this->category = $category;
+        $this->addVideos($videos);
+        $this->addImage($images);
+    }
+
+    public function addVideos(array $videos)
+    {
+        foreach ($videos as $video) {
+            $video->definedTrick($this);
+            $this->videos[] = $video;
+        }
+    }
+
+    public function addImage(array $images)
+    {
+        foreach ($images as $image) {
+            $image->definedTrick($this);
+            $this->images[] = $image;
+        }
+    }
+
     public function getId(): UuidInterface
     {
         return $this->id;

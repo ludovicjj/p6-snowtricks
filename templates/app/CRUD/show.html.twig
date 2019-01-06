@@ -13,6 +13,18 @@
     </div>
 
     <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                {# Message Flash de success update #}
+                {% for message in app.session.flashBag.get('update-trick-success') %}
+                    <div class="alert alert-success mt-4">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
         {# Back Home #}
         <div class="row">
             <div class="col-12">
@@ -40,16 +52,18 @@
             </div>
 
             {# Carousel_image #}
-            <div id="carousel_image">
-                {% for image in trick.images %}
-                    <div class="item">
-                        <div class="item__image">
-                            <a href="#" data-toggle="modal" data-target="#modal__image--{{ image.id }}">
-                                <img src="{{ asset(image.path) }}" alt="{{ image.alt }}" class="img-thumbnail">
-                            </a>
+            <div class="col-12">
+                <div id="carousel_image">
+                    {% for image in trick.images %}
+                        <div class="item" style="margin: 20px 10px 20px 0;">
+                            <div class="item__image">
+                                <a href="#" data-toggle="modal" data-target="#modal__image--{{ image.id }}">
+                                    <img src="{{ asset(image.path) }}" alt="{{ image.alt }}" class="img-thumbnail">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
 
