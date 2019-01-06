@@ -4,7 +4,9 @@ namespace App\Form\Handler;
 
 use App\Builder\User\RegistrationUserBuilder;
 use App\Repository\UserRepository;
+use App\Service\Mailer;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Form\FormError;
 
@@ -25,15 +27,22 @@ class RegistrationUserHandler
      */
     private $userRepository;
 
+    private $mailer;
+    private $sessionInterface;
+
     public function __construct(
         RegistrationUserBuilder $registrationUserBuilder,
         ValidatorInterface $validatorInterface,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        Mailer $mailer,
+        SessionInterface $sessionInterface
     )
     {
         $this->registrationUserBuilder = $registrationUserBuilder;
         $this->validatorInterface = $validatorInterface;
         $this->userRepository = $userRepository;
+        $this->mailer = $mailer;
+        $this->sessionInterface = $sessionInterface;
     }
 
     /**
@@ -63,6 +72,11 @@ class RegistrationUserHandler
             }
 
             $this->userRepository->persists($user);
+            $this->mailer->sendMail($user, 'Inscription', 'registration');
+            $this->sessionInterface->getFlashBag()->add(
+                'registration-user-success',
+                ' Un email vous a été envoyé pour activer votre compte à l\'adresse suivant : '.$form->getData()->email
+            );
 
             return true;
         }
