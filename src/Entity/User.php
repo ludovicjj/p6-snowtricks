@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-class User
+class User implements UserInterface
 {
     /**
      * @var UuidInterface
@@ -38,6 +39,16 @@ class User
     private $createdAt;
 
     /**
+     * @var array
+     */
+    private $roles;
+
+    /**
+     * @var string
+     */
+    private $token;
+
+    /**
      * User constructor.
      * @throws \Exception
      */
@@ -46,6 +57,8 @@ class User
         $this->id = Uuid::uuid4();
         $this->enabled = false;
         $this->createdAt = new \DateTime();
+        $this->roles = array('ROLE_USER');
+        $this->token = hash("sha512", uniqid());
     }
 
     /**
@@ -92,5 +105,24 @@ class User
     public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
     }
 }
