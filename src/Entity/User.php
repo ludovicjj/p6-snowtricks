@@ -70,6 +70,7 @@ class User implements UserInterface
      * @param string $username
      * @param string $password
      * @param string $email
+     * @param Avatar $avatar
      */
     public function registrationUser(
         string $username,
