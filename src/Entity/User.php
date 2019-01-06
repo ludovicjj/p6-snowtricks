@@ -85,6 +85,16 @@ class User implements UserInterface
         $this->avatar = $avatar;
     }
 
+    /**
+     * @param bool $enabled
+     */
+    public function enabledUser(
+        bool $enabled
+    )
+    {
+        $this->enabled = $enabled;
+    }
+
     public function getId(): UuidInterface
     {
         return $this->id;
