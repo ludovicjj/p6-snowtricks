@@ -71,7 +71,8 @@ class UpdateTrickController
 
         return new Response(
             $this->twig->render('app/CRUD/update.html.twig',[
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'trick' => $trick
             ])
         );
     }
