@@ -3,6 +3,7 @@
 namespace App\Form\Handler;
 
 use App\Builder\User\RegistrationUserBuilder;
+use App\Repository\UserRepository;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Form\FormError;
@@ -19,13 +20,20 @@ class RegistrationUserHandler
      */
     private $validatorInterface;
 
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
+
     public function __construct(
         RegistrationUserBuilder $registrationUserBuilder,
-        ValidatorInterface $validatorInterface
+        ValidatorInterface $validatorInterface,
+        UserRepository $userRepository
     )
     {
         $this->registrationUserBuilder = $registrationUserBuilder;
         $this->validatorInterface = $validatorInterface;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -54,6 +62,7 @@ class RegistrationUserHandler
                 return false;
             }
 
+            $this->userRepository->persists($user);
 
             return true;
         }
