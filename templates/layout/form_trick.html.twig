@@ -22,6 +22,37 @@
     </div>
 </div>
 
+{# UploadedImages #}
+{% if trick is defined %}
+    <div class="row">
+        <div class="col-12 col-sm-12 offset-md-2 col-md-8">
+            <div class="col-12 form-group">
+                Image de la figure {{ trick.title }}
+            </div>
+            {% if trick.images|length == 0 %}
+                <div class="col-12 form-group">
+                    Cette figure n'a pas d'image.
+                </div>
+            {% else %}
+                <div class="col-12 form-row">
+                    {% for image in trick.images %}
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                            <div class="form-group form-control" style="height:auto;">
+                                <img src="{{ asset( image.path ) }}" alt="{{ image.alt }}" class="img-fluid mb-2">
+                                <div class="d-flex justify-content-center">
+                                    <a data-url="" href="" class="link-ajax btn btn_custom">
+                                        Supprimer
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
 {# videos #}
 <div class="row">
     <div class="col-12 col-sm-12 offset-md-2 col-md-8">
