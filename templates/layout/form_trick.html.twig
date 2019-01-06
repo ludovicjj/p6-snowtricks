@@ -29,6 +29,9 @@
             <div class="col-12 form-group">
                 Image de la figure {{ trick.title }}
             </div>
+            <div class="col-12">
+                <div class="alert alert-success image-delete-message"></div>
+            </div>
             {% if trick.images|length == 0 %}
                 <div class="col-12 form-group">
                     Cette figure n'a pas d'image.
@@ -36,7 +39,7 @@
             {% else %}
                 <div class="col-12 form-row">
                     {% for image in trick.images %}
-                        <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-4 js_image_ajax_container">
                             <div class="form-group form-control" style="height:auto;">
                                 <img src="{{ asset( image.path ) }}" alt="{{ image.alt }}" class="img-fluid mb-2">
                                 <div class="d-flex justify-content-center">
