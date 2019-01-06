@@ -40,7 +40,7 @@
                             <div class="form-group form-control" style="height:auto;">
                                 <img src="{{ asset( image.path ) }}" alt="{{ image.alt }}" class="img-fluid mb-2">
                                 <div class="d-flex justify-content-center">
-                                    <a data-url="" href="" class="link-ajax btn btn_custom">
+                                    <a data-url="{{ path('delete_images', {'id_image': image.id}) }}" href="" class="link-ajax btn btn_custom">
                                         Supprimer
                                     </a>
                                 </div>
