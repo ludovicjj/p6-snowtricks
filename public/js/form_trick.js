@@ -53,3 +53,21 @@ $(document).on("change", ":input[type=file]", function (e) {
     };
     reader.readAsDataURL(input.files[0]);
 });
+
+/* -------------------------- Ajax -------------------------- */
+
+/* Evement click pour supprimer les image via Ajax */
+$(document).ready(function() {
+    $('.link-ajax').click(function(event) {
+        event.preventDefault();
+        var url = $(event.currentTarget).attr('data-url');
+        $.ajax({
+            url: url,
+            type: 'DELETE',
+            dataType: 'JSON',
+            success: function (response, statusCode, xhr) {
+                console.log(response.message)
+            }
+        });
+    });
+});
