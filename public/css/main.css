@@ -14,6 +14,12 @@
     background: #d2691e;
     color: #FFF;
 }
+.navbar_avatar {
+    width:45px;
+    height: 45px;
+    object-fit: cover;
+    border: 2px #d2691e solid;
+}
 
 /* Color font */
 .custom_orange {
