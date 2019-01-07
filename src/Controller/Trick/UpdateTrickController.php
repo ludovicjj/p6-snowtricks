@@ -72,6 +72,7 @@ class UpdateTrickController
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
+     * @throws \Exception
      */
     public function update(Request $request): Response
     {
