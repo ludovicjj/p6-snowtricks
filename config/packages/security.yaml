@@ -21,11 +21,14 @@ security:
             form_login:
                 login_path: security_login
                 check_path: security_login
+            logout:
+                path: security_logout
+                target: home
             guard:
                 authenticators:
                     - App\Builder\User\LoginUserBuilder
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/figure/ajouter, roles: ROLE_USER }
+        - { path: ^/figure/modifier, roles: ROLE_USER }
+        - { path: ^/figure/supprimer, roles: ROLE_USER }
