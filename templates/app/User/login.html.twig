@@ -3,6 +3,14 @@
 {% block body %}
     <div class="container">
 
+        <div class="row">
+            <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                <div class="col-md-12 custom_title">
+                    <h4>Connexion</h4>
+                </div>
+            </div>
+        </div>
+
         {# Message Flash #}
         <div class="row">
             <div class="col-12 col-sm-12 offset-md-3 col-md-6">
@@ -21,15 +29,14 @@
                         </div>
                     </div>
                 {% endfor %}
-            </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-12 col-sm-12 offset-md-3 col-md-6">
-                <div class="col-md-12 custom_title">
-                    <h4>Connexion</h4>
-                </div>
+                {% if error %}
+                    <div class="col-12">
+                        <div class="alert alert-danger">
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
 
