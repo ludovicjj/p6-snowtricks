@@ -2,6 +2,7 @@
 
 namespace App\Controller\User;
 
+use App\Form\Handler\ForgottenPasswordHandler;
 use App\Form\Type\ForgottenType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,13 +22,20 @@ class ForgottenPasswordUserController
      */
     private $formFactory;
 
+    /**
+     * @var ForgottenPasswordHandler
+     */
+    private $forgottenPasswordHandler;
+
     public function __construct(
         Environment $twig,
-        FormFactoryInterface $formFactory
+        FormFactoryInterface $formFactory,
+        ForgottenPasswordHandler $forgottenPasswordHandler
     )
     {
         $this->twig = $twig;
         $this->formFactory = $formFactory;
+        $this->forgottenPasswordHandler = $forgottenPasswordHandler;
     }
 
     /**
@@ -35,6 +43,7 @@ class ForgottenPasswordUserController
      * @param Request $request
      * @return Response
      *
+     * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
@@ -42,6 +51,8 @@ class ForgottenPasswordUserController
     public function forgotten(Request $request): Response
     {
         $form = $this->formFactory->create(ForgottenType::class)->handleRequest($request);
+
+        $this->forgottenPasswordHandler->handle($form);
 
         return new Response(
             $this->twig->render('app/User/forgotten.html.twig', [
