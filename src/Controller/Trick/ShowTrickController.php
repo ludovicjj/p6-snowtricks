@@ -2,6 +2,8 @@
 
 namespace App\Controller\Trick;
 
+use App\Form\Type\CommentType;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,13 +23,20 @@ class ShowTrickController
      */
     private $twig;
 
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
     public function __construct(
         TrickRepository $trickRepository,
-        Environment $twig
+        Environment $twig,
+        FormFactoryInterface $formFactory
     )
     {
         $this->trickRepository = $trickRepository;
         $this->twig = $twig;
+        $this->formFactory = $formFactory;
     }
 
     /**
@@ -48,9 +57,12 @@ class ShowTrickController
             throw new NotFoundHttpException('Aucune figure ne correspond aux données reçues');
         }
 
+        $form = $this->formFactory->create(CommentType::class)->handleRequest($request);
+
         return new Response(
             $this->twig->render('app/CRUD/show.html.twig', [
-                'trick' => $trick
+                'trick' => $trick,
+                'form' => $form->createView()
             ])
         );
     }
