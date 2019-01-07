@@ -55,6 +55,16 @@ class Trick
     private $images;
 
     /**
+     * @var ArrayCollection
+     */
+    private $comments;
+
+    /**
+     * @var int
+     */
+    private $nbComments;
+
+    /**
      * Trick constructor.
      * @param string $title
      * @param string $description
@@ -81,6 +91,8 @@ class Trick
         $this->category = $category;
         $this->videos = new ArrayCollection($videos);
         $this->images = new ArrayCollection($images);
+        $this->comments = new ArrayCollection();
+        $this->nbComments = 0;
 
         // Defined trick for each video
         foreach ($videos as $video) {
@@ -135,6 +147,16 @@ class Trick
         }
     }
 
+    public function addComment($comment)
+    {
+        $this->comments[] = $comment;
+    }
+
+    public function increaseComment(): void
+    {
+        $this->nbComments++;
+    }
+
     public function getId(): UuidInterface
     {
         return $this->id;
@@ -178,5 +200,15 @@ class Trick
     public function getImages()
     {
         return $this->images;
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function getNbComments(): int
+    {
+        return $this->nbComments;
     }
 }

@@ -80,5 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
             current_page: 0,
         });
     }
+    if (document.querySelector('#js_container_comment') != null) {
+        new Pagination(document.querySelector('#js_container_comment'), {
+            show_per_page : 5,
+            current_page: 0,
+        });
+    }
 
 });

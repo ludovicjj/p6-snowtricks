@@ -103,9 +103,62 @@
                 {% endfor %}
             </div>
         </div>
+
+        {# Form Commentaire #}
+        <div class="row">
+            <div class="col-12 custom_title">
+                <h4>Commentaire ({{ trick.NbComments }})</h4>
+            </div>
+            {% if is_granted('ROLE_USER') %}
+                <div class="col-12">
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                    <div class="row">
+                        <div class="col-12">
+                            {{ form_row(form.message) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn_custom">
+                                Envoyer
+                            </button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <div class="alert alert-danger">
+                        Vous devez être connecté pour écrire un commentaire
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div id="js_container_comment">
+            {% for comment in trick.comments %}
+                <div class="row mb-1 children-monId">
+                    <div class="comment__container shadow-sm p-3 mb-1 bg-white rounded">
+                        <div class="comment__avatar">
+                            <img src="{{ asset(comment.user.avatar.path) }}" alt="{{ comment.user.avatar.alt }}" class="img-fluid">
+                        </div>
+                        <div class="comment__message">
+                            <strong>{{ comment.user.username }}</strong><i><small> écrit à :{{ comment.createdAt|date('H:i') }}, le {{ comment.createdAt|date('d/m/Y') }}</small></i>
+                            <p>
+                                {{ comment.message }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="container_navigation"></div>
+
     </div>
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/carousel.js') }}"></script>
+    <script src="{{ asset('js/pagination.js') }}"></script>
 {% endblock %}

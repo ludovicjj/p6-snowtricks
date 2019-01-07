@@ -2,11 +2,16 @@
 
 namespace App\Controller\Trick;
 
+use App\Form\Handler\AddCommentHandler;
+use App\Form\Type\CommentType;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\TrickRepository;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 class ShowTrickController
@@ -21,13 +26,34 @@ class ShowTrickController
      */
     private $twig;
 
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
+     * @var AddCommentHandler
+     */
+    private $addCommentHandler;
+
+    /**
+     * @var UrlGeneratorInterface
+     */
+    private $urlGenerator;
+
     public function __construct(
         TrickRepository $trickRepository,
-        Environment $twig
+        Environment $twig,
+        FormFactoryInterface $formFactory,
+        AddCommentHandler $addCommentHandler,
+        UrlGeneratorInterface $urlGenerator
     )
     {
         $this->trickRepository = $trickRepository;
         $this->twig = $twig;
+        $this->formFactory = $formFactory;
+        $this->addCommentHandler = $addCommentHandler;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -48,9 +74,19 @@ class ShowTrickController
             throw new NotFoundHttpException('Aucune figure ne correspond aux données reçues');
         }
 
+        $form = $this->formFactory->create(CommentType::class)->handleRequest($request);
+
+        if ($this->addCommentHandler->handle($form, $trick)) {
+
+            return new RedirectResponse(
+                $this->urlGenerator->generate('show_trick', ['slug' => $trick->getSlug()])
+            );
+        }
+
         return new Response(
             $this->twig->render('app/CRUD/show.html.twig', [
-                'trick' => $trick
+                'trick' => $trick,
+                'form' => $form->createView()
             ])
         );
     }

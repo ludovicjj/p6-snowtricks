@@ -32,3 +32,4 @@ security:
         - { path: ^/figure/ajouter, roles: ROLE_USER }
         - { path: ^/figure/modifier, roles: ROLE_USER }
         - { path: ^/figure/supprimer, roles: ROLE_USER }
+        - { path: ^/compte, roles: ROLE_USER }
