@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+{% endblock %}
 
+{% block body %}
     <div class="container mt-4">
 
         <div class="custom_title">
@@ -18,8 +21,10 @@
 
         <div class="row">
             <div class="col-12 col-sm-5 col-md-4 container_user_avatar mb-4 mb-sm-0">
-                <div class="offset-3 col-6  offset-sm-0 col-sm-12 mb-4 avatar__image">
-                    <img src="{{ asset(app.user.avatar.path) }}" alt="{{ app.user.avatar.alt }}" class="img-fluid bg-white rounded">
+                <div class="offset-3 col-6  offset-sm-0 col-sm-12 mb-4 d-flex justify-content-around">
+                    <div class="avatar__image">
+                        <img src="{{ asset(app.user.avatar.path) }}" alt="{{ app.user.avatar.alt }}" class="img-fluid bg-white rounded">
+                    </div>
                 </div>
 
                 <div class="col-12 text-center avatar__button">
