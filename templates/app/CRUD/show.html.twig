@@ -103,6 +103,38 @@
                 {% endfor %}
             </div>
         </div>
+
+        {# Form Commentaire #}
+        <div class="row">
+            <div class="col-12 custom_title">
+                <h4>Commentaire ({{ trick.NbComments }})</h4>
+            </div>
+            {% if is_granted('ROLE_USER') %}
+                <div class="col-12">
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                    <div class="row">
+                        <div class="col-12">
+                            {{ form_row(form.message) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn_custom">
+                                Envoyer
+                            </button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <div class="alert alert-danger">
+                        Vous devez être connecté pour écrire un commentaire
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
     </div>
 {% endblock %}
 
