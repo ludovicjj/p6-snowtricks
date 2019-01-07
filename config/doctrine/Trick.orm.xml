@@ -27,5 +27,15 @@
             </cascade>
         </one-to-many>
 
+        <one-to-many field="comments" target-entity="App\Entity\Comment" mapped-by="trick">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+            <order-by>
+                <order-by-field name="createdAt" direction="DESC" />
+            </order-by>
+        </one-to-many>
+
     </entity>
 </doctrine-mapping>
