@@ -50,7 +50,7 @@ class ForgottenPasswordHandler
             if ($user) {
                 $this->mailer->sendMail($user, 'Réinitialiser mot de passe', 'forgotten');
                 $this->sessionInterface->getFlashBag()->add(
-                    'fogotten-password-success',
+                    'forgotten-password-success',
                     'Un e-mail vous a été envoyé pour réinitialiser votre mot de passe.'
                 );
 

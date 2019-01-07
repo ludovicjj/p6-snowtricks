@@ -15,6 +15,26 @@
             </div>
         </div>
 
+        {# Message Flash #}
+        <div class="row">
+            <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                {% for message in app.session.flashbag.get('forgotten-password-success') %}
+                    <div class="col-12">
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for message in app.session.flashbag.get('forgotten-password-warning') %}
+                    <div class="col-12">
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {# login #}
         <div class="row">
