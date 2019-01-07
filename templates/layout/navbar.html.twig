@@ -26,6 +26,7 @@
                         <img src="{{ asset(app.user.avatar.path) }}" alt="{{ app.user.avatar.alt }}" class="img-fluid navbar_avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('dashboard_home') }}">Tableau de bord</a>
                         <a class="dropdown-item" href="{{ path('security_logout') }}">Déconnexion</a>
                     </div>
                 </li>

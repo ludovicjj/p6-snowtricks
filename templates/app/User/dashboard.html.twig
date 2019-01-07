@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+
+        <div class="custom_title">
+            <h4>Tableau de bord</h4>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <p>
+                    Bienvenue sur la page d'administration de votre compte.<br>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-sm-5 col-md-4 container_user_avatar mb-4 mb-sm-0">
+                <div class="offset-3 col-6  offset-sm-0 col-sm-12 mb-4 d-flex justify-content-around">
+                    <div class="avatar__image">
+                        <img src="{{ asset(app.user.avatar.path) }}" alt="{{ app.user.avatar.alt }}" class="img-fluid bg-white rounded">
+                    </div>
+                </div>
+
+                <div class="col-12 text-center avatar__button">
+                    {# Bouton pour declancher la fenetre modal #}
+                    <button class="btn btn_custom" data-toggle="modal" data-target="#exampleModal" data-url="{{ path('update_avatar') }}">
+                        <i class="fas fa-angle-double-left"></i> Modifier avatar
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-7 col-md-8 container_user_info">
+                <div class="col-12">
+                    <strong class="custom_grey">Pseudo :</strong>
+                    <p>{{ app.user.username }}</p>
+                </div>
+                <div class="col-12">
+                    <strong class="custom_grey">E-mail :</strong>
+                    <p>{{ app.user.email }}</p>
+                </div>
+                <div class="col-12">
+                    <strong class="custom_grey">Inscription :</strong>
+                    <p>{{ app.user.createdAt|date('d/m/Y') }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalTitle">Modification de l'avatar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {# jQuery Form Plugin  #}
+    <script src="{{ asset('library/jquery.form.min.js') }}"></script>
+    {# Js Update avatar #}
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+{% endblock %}
