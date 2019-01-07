@@ -26,10 +26,6 @@
     color: #d2691e;
 }
 
-/* Display badge error */
-.form-error-icon {
-    display: none;
-}
 
 /* Response ajax */
 .image-delete-message {
