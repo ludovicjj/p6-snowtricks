@@ -34,6 +34,14 @@
                     </div>
                 {% endfor %}
 
+                {% for message in app.session.flashbag.get('reset-password-success') %}
+                    <div class="col-12">
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+
                 {% if error %}
                     <div class="col-12">
                         <div class="alert alert-danger">
