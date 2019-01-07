@@ -42,7 +42,7 @@ class Mailer
     {
         $message = (new \Swift_Message())
             ->setSubject($subject)
-            ->setFrom('snowtricks')
+            ->setFrom('jahanlud@gmail.com')
             ->setTo($user->getEmail())
             ->setBody(
                 $this->twig->render('email/'.$template.'.html.twig', [
