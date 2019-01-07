@@ -78,7 +78,7 @@ class EnabledUserController
         );
 
         return new RedirectResponse(
-            $this->urlGenerator->generate('home')
+            $this->urlGenerator->generate('security_login')
         );
     }
 }
