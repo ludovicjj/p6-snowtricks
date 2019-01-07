@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/form_user.css') }}">
+{% endblock %}
+
 {% block body %}
     <div class="container">
 
@@ -23,6 +27,14 @@
                 {% endfor %}
 
                 {% for message in app.session.flashbag.get('enabled-user-success') %}
+                    <div class="col-12">
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% for message in app.session.flashbag.get('reset-password-success') %}
                     <div class="col-12">
                         <div class="alert alert-success">
                             {{ message }}
@@ -76,7 +88,7 @@
             <div class="row">
                 <div class="col-12 col-sm-12 offset-md-3 col-md-6">
                     <div class="col-12">
-                        <a href="#" class="custom_orange">Mot de passe oublié</a>
+                        <a href="{{ path('security_forgotten') }}" class="custom_orange">Mot de passe oublié</a>
                     </div>
                 </div>
             </div>
