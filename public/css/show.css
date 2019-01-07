@@ -95,6 +95,25 @@
     width: 100%;
 }
 
+/* Commentaire */
+.comment__container {
+    display: flex;
+    margin: 0 15px 0 15px;
+    border: 1px lightgrey solid;
+    width: 100%;
+    padding: 5px;
+}
+.comment__avatar {
+    min-width: 60px;
+    max-width: 60px;
+    height: 60px;
+    object-fit: cover;
+    overflow: hidden;
+}
+.comment__message {
+    padding:0 20px;
+}
+
 @media screen and (max-width: 800px) {
     .carousel__prev {
         left: 10px;
