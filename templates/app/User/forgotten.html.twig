@@ -1,5 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    hello
+    <div class="container mt-4">
+
+        <div class="row">
+            <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                <div class="col-md-12 custom_title">
+                    <h4>Mot de passe oublié</h4>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {# login #}
+        <div class="row">
+            <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                <div class="col-12 form-group">
+                    {{ form_row(form.login) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                <div class="col-12">
+                    <button type="submit" class="btn btn_custom">
+                        Valider
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+    </div>
 {% endblock %}
