@@ -135,9 +135,30 @@
             {% endif %}
         </div>
 
+        <div id="js_container_comment">
+            {% for comment in trick.comments %}
+                <div class="row mb-1 children-monId">
+                    <div class="comment__container shadow-sm p-3 mb-1 bg-white rounded">
+                        <div class="comment__avatar">
+                            <img src="{{ asset(comment.user.avatar.path) }}" alt="{{ comment.user.avatar.alt }}" class="img-fluid">
+                        </div>
+                        <div class="comment__message">
+                            <strong>{{ comment.user.username }}</strong><i><small> écrit à :{{ comment.createdAt|date('H:i') }}, le {{ comment.createdAt|date('d/m/Y') }}</small></i>
+                            <p>
+                                {{ comment.message }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="container_navigation"></div>
+
     </div>
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/carousel.js') }}"></script>
+    <script src="{{ asset('js/pagination.js') }}"></script>
 {% endblock %}
