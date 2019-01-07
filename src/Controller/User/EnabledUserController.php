@@ -6,6 +6,7 @@ use App\Builder\User\EnabledUserBuilder;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -28,20 +29,28 @@ class EnabledUserController
     private $enabledUserBuilder;
 
     /**
+     * @var SessionInterface
+     */
+    private $sessionInterface;
+
+    /**
      * EnabledUserController constructor.
      * @param UserRepository $userRepository
      * @param UrlGeneratorInterface $urlGenerator
      * @param EnabledUserBuilder $enabledUserBuilder
+     * @param SessionInterface $sessionInterface
      */
     public function __construct(
         UserRepository $userRepository,
         UrlGeneratorInterface $urlGenerator,
-        EnabledUserBuilder $enabledUserBuilder
+        EnabledUserBuilder $enabledUserBuilder,
+        SessionInterface $sessionInterface
     )
     {
         $this->userRepository = $userRepository;
         $this->urlGenerator = $urlGenerator;
         $this->enabledUserBuilder = $enabledUserBuilder;
+        $this->sessionInterface = $sessionInterface;
     }
 
     /**
@@ -62,6 +71,11 @@ class EnabledUserController
         }
 
         $this->enabledUserBuilder->enabled($user);
+
+        $this->sessionInterface->getFlashBag()->add(
+            'enabled-user-success',
+            'Votre compte a est activé, vous pouvez vous connecter.'
+        );
 
         return new RedirectResponse(
             $this->urlGenerator->generate('home')
