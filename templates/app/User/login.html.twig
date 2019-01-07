@@ -1,5 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    hello
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                <div class="col-md-12 custom_title">
+                    <h4>Connexion</h4>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+
+            <div class="row">
+                <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                    <div class="col-md-12 form-group">
+                        {# Username #}
+                        <label for="inputUsername">Pseudo</label>
+                        <input type="text"
+                               name="username"
+                               id="inputUsername"
+                               class="form-control"
+                               value="{{ last_username }}"
+                               required autofocus
+                        >
+                    </div>
+                    <div class="col-md-12 form-group">
+                        {# password #}
+                        <label for="inputPassword">Mot de passe</label>
+                        <input type="password"
+                               name="password"
+                               id="inputPassword"
+                               class="form-control"
+                               required
+                        >
+                    </div>
+                    {# csrf_token #}
+                    <input type="hidden"
+                           name="_csrf_token"
+                           value="{{ csrf_token('snowtricksauthentification') }}"
+                    >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                    <div class="col-12">
+                        <a href="#" class="custom_orange">Mot de passe oublié</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn_custom mt-2">
+                            Connexion
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
 {% endblock %}
