@@ -71,7 +71,7 @@ class RegistrationUserController
 
         if ($this->registrationUserHandler->handle($form)) {
             return new RedirectResponse(
-                $this->urlGenerator->generate('home')
+                $this->urlGenerator->generate('security_login')
             );
         }
 
