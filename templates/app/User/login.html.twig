@@ -3,6 +3,28 @@
 {% block body %}
     <div class="container">
 
+        {# Message Flash #}
+        <div class="row">
+            <div class="col-12 col-sm-12 offset-md-3 col-md-6">
+                {% for message in app.session.flashbag.get('registration-user-success') %}
+                    <div class="col-12">
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% for message in app.session.flashbag.get('enabled-user-success') %}
+                    <div class="col-12">
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
         <div class="row">
             <div class="col-12 col-sm-12 offset-md-3 col-md-6">
                 <div class="col-md-12 custom_title">
