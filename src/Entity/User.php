@@ -95,6 +95,16 @@ class User implements UserInterface
         $this->enabled = $enabled;
     }
 
+    /**
+     * @param string $password
+     */
+    public function resetPassword(
+        string $password
+    )
+    {
+        $this->password = $password;
+    }
+
     public function getId(): UuidInterface
     {
         return $this->id;
