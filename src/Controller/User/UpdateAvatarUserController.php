@@ -4,6 +4,7 @@ namespace App\Controller\User;
 
 use App\Entity\User;
 use App\DTO\AvatarDTO;
+use App\Form\Handler\UpdateAvatarHandler;
 use App\Form\Type\AvatarType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,11 +41,17 @@ class UpdateAvatarUserController
      */
     private $user;
 
+    /**
+     * @var UpdateAvatarHandler
+     */
+    private $updateAvatarHandler;
+
     public function __construct(
         Environment $twig,
         FormFactoryInterface $formFactory,
         UrlGeneratorInterface $urlGenerator,
-        TokenStorageInterface $tokenStorageInterface
+        TokenStorageInterface $tokenStorageInterface,
+        UpdateAvatarHandler $updateAvatarHandler
 
     )
     {
@@ -52,6 +59,7 @@ class UpdateAvatarUserController
         $this->formFactory = $formFactory;
         $this->urlGenerator = $urlGenerator;
         $this->tokenStorageInterface = $tokenStorageInterface;
+        $this->updateAvatarHandler = $updateAvatarHandler;
     }
 
     /**
@@ -74,6 +82,10 @@ class UpdateAvatarUserController
         ;
 
         $this->user = $this->tokenStorageInterface->getToken()->getUser();
+
+        if ($this->updateAvatarHandler->handle($form, $this->user)) {
+            return new Response('success');
+        }
 
         return new Response(
             $this->twig->render('layout/form_avatar.html.twig', [
