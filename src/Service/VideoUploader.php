@@ -49,7 +49,8 @@ class VideoUploader
     private function youtubeId($url)
     {
         $tableaux = explode("=", $url);  // découpe l’url en deux  avec le signe ‘=’
-        $this->idVideo = $tableaux[1];  // id de la video youtube
+        $clef = explode("&", $tableaux[1]);  // decoupe en deux dans le cas d'un playlist
+        $this->idVideo = $clef[0];  // id de la video youtube
         $this->type = 'youtube';  // signale qu’il s’agit d’une video youtube
     }
 
