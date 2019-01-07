@@ -26,6 +26,7 @@
         </div>
 
         {# Card Footer user only #}
+        {% if is_granted('ROLE_USER') %}
         <div class="card-footer text-center">
             <a href="{{ path('update_trick', {'slug': trick.slug}) }}" class="btn btn-xs btn_custom">
                 <i class="fas fa-pencil-alt"></i>
@@ -58,8 +59,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
+        {% endif %}
 
     </div><!-- end card -->
 </div>
