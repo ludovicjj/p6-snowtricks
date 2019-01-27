@@ -1,25 +1,26 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ludovic
- * Date: 08/01/2019
- * Time: 07:26
- */
 
 namespace App\Tests\Entity;
 
-
 use PHPUnit\Framework\TestCase;
+use App\Entity\Avatar;
 
 class AvatarTest extends TestCase
 {
+    /**
+     * @throws \Exception
+     */
     public function testConstructor()
     {
         $avatar = new Avatar(
-            'monimage.jpg',
+            'image.jpg',
             '/uploads/images',
-            'monimahe.jpg'
+            'image.jpg'
         );
 
+        static::assertInstanceOf(Avatar::class, $avatar);
+        static::assertEquals('image.jpg', $avatar->getFilename());
+        static::assertEquals('/uploads/images', $avatar->getPath());
+        static::assertEquals('image.jpg', $avatar->getAlt());
     }
 }
