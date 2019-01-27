@@ -1,17 +1,17 @@
 function redimensionnement(){
-    let $image = $('.cover_home');
+    let $image = $(".cover_home");
 
-    let navbar = $('.navbar');
-    let navbar_height = navbar.outerHeight();
+    let navbar = $(".navbar");
+    let navbarHeight = navbar.outerHeight();
 
-    var body_width = $(window).width();
-    var body_height = $(window).height();
+    var bodyWidth = $(window).width();
+    var bodyHeight = $(window).height();
 
     $image.css({
-        'width': body_width + 'px',
-        'height': body_height  + 'px',
-        'top': '-' + navbar_height + 'px',
-        'left': '0px'
+        "width": bodyWidth + "px",
+        "height": bodyHeight  + "px",
+        "top": "-" + navbarHeight + "px",
+        "left": "0px"
     });
 }
 $(document).ready(function(){
