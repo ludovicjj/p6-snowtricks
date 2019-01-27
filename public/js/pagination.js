@@ -16,21 +16,21 @@ class Pagination {
 
         let buttonPagination = [].slice.call(document.querySelectorAll(".page-link"));
         buttonPagination.map((child) => {
-            child.addEventListener("click", ()=> {
-                this.go_to_page(child.classList[1]);
+            child.addEventListener("click", () => {
+                this.goToPage(child.classList[1]);
             })
         });
     }
 
-    number_of_pages() {
+    numberOfPages() {
         return( Math.ceil(this.items / this.options.showPerPage));
     }
 
     setStyle(first, last) {
-        this.children.forEach(child => {
+        this.children.forEach((child) => {
             child.style.display = "none";
         });
-        this.children.slice(first, last).forEach(child => {
+        this.children.slice(first, last).forEach((child) => {
             child.style.display = "flex";
         })
     }
@@ -40,28 +40,28 @@ class Pagination {
         ul.setAttribute("class", "pagination");
         ul.classList.add("justify-content-center");
         let i = -1;
-        while(this.number_of_pages() > ++i){
-            let li = document.createElement('li');
-            li.setAttribute('class', 'page-item');
+        while(this.numberOfPages() > ++i){
+            let li = document.createElement("li");
+            li.setAttribute("class", "page-item");
             if (!i) {
                 li.classList.add("active");
             }
-            let link = document.createElement('a');
-            link.setAttribute('class', 'page-link');
-            link.classList.add('' + i + '');
-            link.innerHTML = i+1;
+            let link = document.createElement("a");
+            link.setAttribute("class", "page-link");
+            link.classList.add("" + i + "");
+            link.innerHTML = i + 1;
 
-            li.setAttribute('id', 'id'+i);
+            li.setAttribute("id", "id" + i);
             li.appendChild(link);
             ul.appendChild(li);
         }
 
         // Container pour la pagination
-        document.querySelector('#container_navigation').appendChild(ul);
+        document.querySelector("#container_navigation").appendChild(ul);
     }
 
 
-    go_to_page(page_num) {
+    goToPage(page_num) {
         this.options.currentPage = page_num;
         let start = this.options.currentPage * this.options.showPerPage;
         let end = start + this.options.showPerPage;
