@@ -27,14 +27,14 @@ class Carousel {
         this.moveCallbacks = [];
 
         // Modification du DOM
-        this.root = this.createDivWithClass('carousel');
-        this.mycontainer = this.createDivWithClass('carousel__container');
-        this.container = this.createDivWithClass('carousel__panorama');
+        this.root = this.createDivWithClass("carousel");
+        this.mycontainer = this.createDivWithClass("carousel__container");
+        this.container = this.createDivWithClass("carousel__panorama");
         this.mycontainer.appendChild(this.container);
         this.root.appendChild(this.mycontainer);
         this.element.appendChild(this.root);
         this.items = children.map((child) =>{
-            let item = this.createDivWithClass('carousel__item');
+            let item = this.createDivWithClass("carousel__item");
             item.appendChild(child);
             this.container.appendChild(item);
             return item;
@@ -44,9 +44,9 @@ class Carousel {
 
 
         // Evenement
-        this.moveCallbacks.forEach(cd =>cd(0));
+        this.moveCallbacks.forEach(cd => cd(0));
         this.onWindowResize();
-        window.addEventListener('resize', this.onWindowResize.bind(this));
+        window.addEventListener("resize", this.onWindowResize.bind(this));
     }
 
     /**
@@ -59,25 +59,25 @@ class Carousel {
     }
 
     createNavigation () {
-        let nextButton = this.createDivWithClass('carousel__next');
-        let prevButton = this.createDivWithClass('carousel__prev');
+        let nextButton = this.createDivWithClass("carousel__next");
+        let prevButton = this.createDivWithClass("carousel__prev");
         this.root.appendChild(nextButton);
         this.root.appendChild(prevButton);
-        nextButton.addEventListener('click', this.next.bind(this));
-        prevButton.addEventListener('click', this.prev.bind(this));
+        nextButton.addEventListener("click", this.next.bind(this));
+        prevButton.addEventListener("click", this.prev.bind(this));
         if (this.options.loop === true) {
             return;
         }
         this.onMove(index => {
             if (index === 0) {
-                prevButton.classList.add('carousel__prev--hidden');
+                prevButton.classList.add("carousel__prev--hidden");
             } else {
-                prevButton.classList.remove('carousel__prev--hidden');
+                prevButton.classList.remove("carousel__prev--hidden");
             }
             if (this.items[this.currentItem + this.slidesVisible] === undefined) {
-                nextButton.classList.add('carousel__next--hidden');
+                nextButton.classList.add("carousel__next--hidden");
             } else {
-                nextButton.classList.remove('carousel__next--hidden');
+                nextButton.classList.remove("carousel__next--hidden");
             }
         })
     }
@@ -102,9 +102,9 @@ class Carousel {
             index = 0;
         }
         let translateX = index * -100 / this.items.length;
-        this.container.style.transform = 'translate3d(' + translateX + '%, 0, 0)';
+        this.container.style.transform = "translate3d(" + translateX + "%, 0, 0)";
         this.currentItem = index;
-        this.moveCallbacks.forEach(cd =>cd(index));
+        this.moveCallbacks.forEach(cd => cd(index));
     }
 
     /**
@@ -119,7 +119,7 @@ class Carousel {
         if (mobile !== this.isMobile) {
             this.isMobile = mobile;
             this.setStyle();
-            this.moveCallbacks.forEach(cd =>cd(this.currentItem));
+            this.moveCallbacks.forEach(cd => cd(this.currentItem));
         }
     }
 
@@ -128,8 +128,8 @@ class Carousel {
      * @returns {HTMLElement}
      */
     createDivWithClass(classname) {
-        let div = document.createElement('div');
-        div.setAttribute('class', classname);
+        let div = document.createElement("div");
+        div.setAttribute("class", classname);
         return div
     }
 
@@ -149,14 +149,14 @@ class Carousel {
 
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    new Carousel(document.querySelector('#carousel_image'), {
+document.addEventListener("DOMContentLoaded", function() {
+    new Carousel(document.querySelector("#carousel_image"), {
         slidesToScroll : 1,
         slidesVisible: 3,
         loop: false
     });
 
-    new Carousel(document.querySelector('#carousel_video'), {
+    new Carousel(document.querySelector("#carousel_video"), {
         slidesToScroll : 1,
         slidesVisible: 1,
         loop: false
