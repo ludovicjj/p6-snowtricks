@@ -33,7 +33,7 @@ class Carousel {
         this.mycontainer.appendChild(this.container);
         this.root.appendChild(this.mycontainer);
         this.element.appendChild(this.root);
-        this.items = children.map((child) =>{
+        this.items = children.map((child) => {
             let item = this.createDivWithClass("carousel__item");
             item.appendChild(child);
             this.container.appendChild(item);
@@ -44,7 +44,7 @@ class Carousel {
 
 
         // Evenement
-        this.moveCallbacks.forEach(cd => cd(0));
+        this.moveCallbacks.forEach((cd) => cd(0));
         this.onWindowResize();
         window.addEventListener("resize", this.onWindowResize.bind(this));
     }
@@ -55,7 +55,7 @@ class Carousel {
     setStyle () {
         let ratio = this.items.length / this.slidesVisible;
         this.container.style.width = (ratio * 100) + "%";
-        this.items.forEach(item =>  item.style.width = ((100 / this.slidesVisible) / ratio) + "%");
+        this.items.forEach((item) =>  item.style.width = ((100 / this.slidesVisible) / ratio) + "%");
     }
 
     createNavigation () {
@@ -68,7 +68,7 @@ class Carousel {
         if (this.options.loop === true) {
             return;
         }
-        this.onMove(index => {
+        this.onMove((index) => {
             if (index === 0) {
                 prevButton.classList.add("carousel__prev--hidden");
             } else {
@@ -104,7 +104,7 @@ class Carousel {
         let translateX = index * -100 / this.items.length;
         this.container.style.transform = "translate3d(" + translateX + "%, 0, 0)";
         this.currentItem = index;
-        this.moveCallbacks.forEach(cd => cd(index));
+        this.moveCallbacks.forEach((cd) => cd(index));
     }
 
     /**
@@ -119,7 +119,7 @@ class Carousel {
         if (mobile !== this.isMobile) {
             this.isMobile = mobile;
             this.setStyle();
-            this.moveCallbacks.forEach(cd => cd(this.currentItem));
+            this.moveCallbacks.forEach((cd) => cd(this.currentItem));
         }
     }
 
