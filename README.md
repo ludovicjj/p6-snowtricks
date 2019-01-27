@@ -4,10 +4,10 @@
 
 ## Project
 
-  - Symfony 4.2
-  - Doctrine
-  - Twig
+- Symfony 4.2
+- Doctrine
+- Twig
 
 ## How to instal
 
-  - J'en sais rien.
+- J'en sais rien.
