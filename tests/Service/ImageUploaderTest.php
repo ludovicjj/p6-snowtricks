@@ -50,6 +50,10 @@ class ImageUploaderTest extends TestCase
 
         $newFileName = $this->imageUploader->getImageInfo($fileMock);
         static::assertNotNull($newFileName);
+        static::assertInternalType('array', $newFileName);
+        static::assertInternalType('string', $newFileName['filename']);
+        static::assertInternalType('string', $newFileName['path']);
+        static::assertInternalType('string', $newFileName['alt']);
     }
 
     public function provideValues()
