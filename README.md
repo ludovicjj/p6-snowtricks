@@ -17,7 +17,7 @@ https://github.com/ludovicjj/p6-snowtricks.git
 ```
 *   Install Dependencies : 
 ```
-composer instal 
+composer install 
 ```
 
 *   Database : 
