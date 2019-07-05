@@ -39,7 +39,8 @@ class HomeController
      */
     public function home(): Response
     {
-        $tricks = $this->trickRepository->findAll();
+        //$tricks = $this->trickRepository->findAll();
+        $tricks = $this->trickRepository->getAllTricksByDate();
         return new Response(
             $this->twig->render('app/home.html.twig',[
                 'tricks' => $tricks
