@@ -49,7 +49,9 @@ class ImageUploader
     {
         $this->filename = md5(uniqid()).'.'.$file->guessExtension();
         $this->path = $this->imageUploadPath .'/'. $this->filename;
-        $this->alt = strtolower(str_replace(' ', '-', $file->getClientOriginalName()));
+
+        $extension = ['.jpg', '.png', '.jpeg'];
+        $this->alt = str_replace($extension, '', $file->getClientOriginalName());
 
         try {
             $file->move($this->imageDirectory, $this->filename);

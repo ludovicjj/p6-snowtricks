@@ -42,4 +42,13 @@ class TrickRepository extends ServiceEntityRepository
         $this->_em->remove($trick);
         $this->save();
     }
+
+    public function getAllTricksByDate()
+    {
+        return $this->createQueryBuilder('t')
+            ->select('t')
+            ->orderBy('t.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
